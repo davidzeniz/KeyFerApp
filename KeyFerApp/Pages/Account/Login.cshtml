@@ -1,0 +1,100 @@
+﻿@page
+@model KeyFerApp.Pages.Account.LoginModel
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Login";
+}
+<main class="main" id="top">
+    <div class="container-fluid">
+        <script>
+            var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+            if (isFluid) {
+                var container = document.querySelector('[data-layout]');
+                container.classList.remove('container');
+                container.classList.add('container-fluid');
+            }
+        </script>
+        <div class="row min-vh-100 bg-100">
+            <div class="col-6 d-none d-lg-block position-relative">
+                <div class="bg-holder" style="background-image:url(../../../assets/img/ecar/sanpeter.png);background-position: 50% 20%;">
+                </div>
+                <!--/.bg-holder-->
+
+            </div>
+            <div class="col-sm-10 col-md-6 px-sm-0 align-self-center mx-auto py-5">
+                <div class="row justify-content-center g-0">
+                    <div class="col-lg-9 col-xl-8 col-xxl-6">
+                        <div class="card">
+                            <div class="card-header bg-circle-shape bg-shape text-center p-2"><a class="font-sans-serif fw-bolder fs-4 z-index-1 position-relative link-light light" href="https://www.facebook.com/david.zeniz">KeyFerApp</a></div>
+                            <div class="card-body p-4">
+                                <div class="row flex-between-center">
+                                    <div class="col-auto">
+                                        <h3>Inicio Sesion</h3>
+                                    </div>
+                                    
+                                    <div class="col-auto fs--1 text-600">
+                                        <span class="mb-0 fw-semi-bold">Eres Nuevo?</span>
+                                        <span><a asp-page="/Account/Create">Crear Cuenta</a></span>
+                                    </div>
+
+                                </div>
+                                <form method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="split-login-email">Correo</label>
+                                        <input class="form-control" id="split-login-email" type="email" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <label class="form-label" for="split-login-password">Contraseña</label>
+                                        </div>
+                                        <input class="form-control" id="split-login-password" type="password" />
+                                    </div>
+                                    <div class="row flex-between-center">
+                                        <div class="col-auto">
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input" type="checkbox" id="split-checkbox" />
+                                                <label class="form-check-label mb-0" for="split-checkbox">Remember me</label>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-auto">
+                                            <a class="fs--1" asp-page="/Account/Forgotpassword">Olvidaste tu Contraseña?</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Ingresar</button>
+                                    </div>
+                                </form>
+                                <div class="position-relative mt-4">
+                                    <hr class="bg-300" />
+                                    <div class="divider-content-center">or log in with</div>
+                                </div>
+                                <div class="row g-2 mt-2">
+                                    <div class="col-sm-6"><a class="btn btn-outline-google-plus btn-sm d-block w-100" href="#"><span class="fab fa-google-plus-g me-2" data-fa-transform="grow-8"></span> google</a></div>
+                                    <div class="col-sm-6"><a class="btn btn-outline-facebook btn-sm d-block w-100" href="#"><span class="fab fa-facebook-square me-2" data-fa-transform="grow-8"></span> facebook</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.querySelector('[type="password"]');
+        const toggleButton = document.getElementById("togglePassword");
+
+        toggleButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+            } else {
+                passwordInput.type = "password";
+                toggleButton.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+            }
+        });
+    });
+</script>
